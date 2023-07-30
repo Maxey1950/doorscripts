@@ -1,4 +1,4 @@
-firesignal(game:GetService("ReplicatedStorage").EntityInfo.Caption.OnClientEvent, 'DOORS Nightmare Mode Loading! It takes 40/50 seconds to load Open the first door!',true,5)
+firesignal(game:GetService("ReplicatedStorage").EntityInfo.Caption.OnClientEvent, 'DOORS Nightmare Mode Loading! It takes 40/50 seconds to load Open the first door you may need to rerun the script in order for it to work as a beta!',true,5)
 task.wait(5)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/MuhXd/DoorSuff/main/DoorsModes/HardMode(Multplayer%2CProtected).lua'))()
 task.wait(5)
