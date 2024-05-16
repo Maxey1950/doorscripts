@@ -1,0 +1,31 @@
+-- Create a GUI and a TextLabel
+local gui = Instance.new("ScreenGui")
+gui.Parent = game.Players.LocalPlayer.PlayerGui
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(0, 200, 0, 50)
+textLabel.Position = UDim2.new(0.02, 0, 0.9, 0) -- Adjusted position to bottom left corner
+textLabel.BackgroundColor3 = Color3.new(0, 0, 0)
+textLabel.TextColor3 = Color3.new(1, 1, 1) -- Set text color to white
+textLabel.Font = Enum.Font.SourceSans
+textLabel.TextSize = 20
+textLabel.TextWrapped = true
+textLabel.Text = "Sample Text" -- Sample text to illustrate
+textLabel.Parent = gui
+
+-- Check if TouchInterests exist
+if game.Workspace.Map.Tunnel.Wall.Face.TouchInterest or game.Workspace.Map.Tunnel.Wall.TouchInterest then
+    textLabel.Text = "Exists"
+    wait(2)
+    textLabel.Text = "Deleting kill touch"
+    wait(2)
+    textLabel.Text = "Deleted!"
+wait(2)
+textLabel.Visible = false
+    if game.Workspace.Map.Tunnel.Wall.TouchInterest then
+        game.Workspace.Map.Tunnel.Wall.TouchInterest:Destroy()
+    end
+    if game.Workspace.Map.Tunnel.Wall.Face.TouchInterest then
+        game.Workspace.Map.Tunnel.Wall.Face.TouchInterest:Destroy()
+    end
+end
