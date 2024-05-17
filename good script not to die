@@ -1,6 +1,6 @@
 -- Create a GUI and a TextLabel
 local gui = Instance.new("ScreenGui")
-gui.Parent = game.Players.LocalPlayer.PlayerGui
+gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 local textLabel = Instance.new("TextLabel")
 textLabel.Size = UDim2.new(0, 200, 0, 50)
@@ -13,19 +13,28 @@ textLabel.TextWrapped = true
 textLabel.Text = "Sample Text" -- Sample text to illustrate
 textLabel.Parent = gui
 
--- Check if TouchInterests exist
-if game.Workspace.Map.Tunnel.Wall.Face.TouchInterest or game.Workspace.Map.Tunnel.Wall.TouchInterest then
+-- Function to handle the text changes and deletion process
+local function handleTouchInterestDeletion()
     textLabel.Text = "Exists"
     wait(2)
     textLabel.Text = "Deleting kill touch"
     wait(2)
     textLabel.Text = "Deleted!"
-wait(2)
-textLabel.Visible = false
-    if game.Workspace.Map.Tunnel.Wall.TouchInterest then
-        game.Workspace.Map.Tunnel.Wall.TouchInterest:Destroy()
+    wait(2)
+    textLabel.Visible = false
+end
+
+-- Check if TouchInterests exist and destroy them if they do
+local wall = game.Workspace:WaitForChild("Map"):WaitForChild("Tunnel"):WaitForChild("Wall")
+
+if wall:FindFirstChild("TouchInterest") or (wall:FindFirstChild("Face") and wall.Face:FindFirstChild("TouchInterest")) then
+    handleTouchInterestDeletion()
+
+    if wall:FindFirstChild("TouchInterest") then
+        wall.TouchInterest:Destroy()
     end
-    if game.Workspace.Map.Tunnel.Wall.Face.TouchInterest then
-        game.Workspace.Map.Tunnel.Wall.Face.TouchInterest:Destroy()
+
+    if wall:FindFirstChild("Face") and wall.Face:FindFirstChild("TouchInterest") then
+        wall.Face.TouchInterest:Destroy()
     end
 end
