@@ -18,7 +18,7 @@ end
 
 while true do
     local executorName = getexecutorname()
-    if executorName == "Solara" or executorName == "Solara ALPHA" or executorName == "Wave" then
+    if executorName == "Solara" or executorName == "Solara ALPHA" or executorName == "Wave" or executorName == "Wave 5.0" then
         if currentLifebrickIndex > #buttons then
             currentLifebrickIndex = 1  -- Reset to the first Lifebrick if all have been visited
         end
