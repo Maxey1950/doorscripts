@@ -3,7 +3,7 @@ local player = game.Players.LocalPlayer
 while true do
     local character = player.Character
     if not character then
-        wait(10)
+        wait(1)
         continue
     end
 
